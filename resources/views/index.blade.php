@@ -68,7 +68,7 @@
        <div class="container main">
         <div class="row row_logo">
             <div class="col-sm-2 col_img">
-                <img src="{{URL::asset('assets/imges/logo.png')}}" height="120px">
+                <img src="/imges/logo.png" height="120px">
             </div>
             <div class="col-sm-6 col_commu">
                 <h1><b>Communito</b></h1>
@@ -77,13 +77,13 @@
             <div class="col-sm-4">
                 <div class="row row_btn">
                     <div class="col-sm-6 btnlogin">
-                        <form class="form" action="{!!url('communito/login')!!}">
+                        <form class="form" action="{{ url('user/login') }}">
                             <input type="submit" name="login" value="Login" class="form-control btn btn-primary">                  
                         </form>                       
                     </div>
 
                     <div class="col-sm-6 btnsignup">
-                        <form class="form" action="{!!url('communito/signup')!!}">
+                        <form class="form" action="{{ url('user/signup') }}"">
                             <input type="submit" name="signup" value="Signup" class="form-control btn btn-primary">
                         </form>
                     </div>

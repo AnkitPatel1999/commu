@@ -1,118 +1,185 @@
-<!doctype html>
 <html lang="en">
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-    
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
+<meta name="csrf-token" content="{{ csrf_token() }}" />
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <!------ Include the above in your HEAD tag ---------->
+<script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+<script src='https://kit.fontawesome.com/a076d05399.js'></script>
+{{-- <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+        crossorigin="anonymous"> --}}
+        
+<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
     <title>communito.com</title>
     <style type="text/css">
-      #img{
-        margin-left:  70%;
+      
+      .form-inline{
+        margin:0% 0% 0% 40%;
       }
-      .storytop{
-        padding-top:28px;
 
-      }
-     
-      .menutop{
+      body {
+            background-color: #eeeeee;
+        }
 
-        padding-top: 28px;
-        font-size: 20px;
-      }
-      .logoimg{
-        margin-left: 250px;
-      }
-      .postrow
-      {
-        margin-top: 10px;
-      }
-      .menubtn{
-        height: 60px;
-        font-size: 16px;
-        border-radius: 5px;
-        border: 3px solid #ffffff;
-        background-color: #479761;
-        color: #ffffff;
+        .h7 {
+            font-size: 0.8rem;
+        }
 
-      }
-      .panel-heading{
-        background-color: #479761;
-      }
-      i{
-        color: #5b4545;
-      }
-    </style>
+        .gedf-wrapper {
+            margin-top: 0.97rem;
+        }
+
+        @media (min-width: 992px) {
+            .gedf-main {
+               /* padding-left: 4rem;
+                padding-right: 4rem;*/
+            }
+            .gedf-card {
+                margin-bottom: 2.77rem;
+            }
+        }
+
+        /**Reset Bootstrap*/
+        .dropdown-toggle::after {
+            content: none;
+            display: none;
+        }
+        .profile:hover{
+          text-decoration: none;
+          background-color: #f7f7a9;
+
+        }
+
+        .posts{
+          margin-bottom: 10px;
+        }
+
+
+  </style>
    
 </head>
-<body style="background-image: url({{URL::asset('assets/imges/a1.jpg')}}); font-size: 20px;">
-<div class="container" style="color: #ffffff">
- 
-
-<div class="row">
-  <div class="col-sm-2">
-    <div class="row">
-      <div class="col-sm-12">
-        <h2>Menu</h2>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-sm-12 menutop">
-        <input type="text" name="search" class="form-control menubtn" placeholder="Search" style="padding: 10px 10px 10px 20px; border: 3px solid; border-radius: 30px; ">
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-sm-12">
-        <a href="{!!url('communito/post')!!}" ><button class="form-control menubtn">Home</button></a>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-sm-12">
-        <a href="{!!url('communito/request')!!}" ><button class="form-control menubtn">Request</button></a> 
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-sm-12">
-        <a href="{!!url('communito/chat')!!}" ><button class="form-control menubtn">Chat</button></a> 
-      </div>
-    </div>
-      <div class="row">
-      <div class="col-sm-12">
-        <a href="{!!url('communito/myaccount')!!}" ><button class="form-control menubtn">My Account</button></a> 
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-sm-12">
-        <a href="{!!url('communito/setting')!!}" ><button class="form-control menubtn">Setting</button></a> 
-      </div>
-    </div>
-  </div> <!-- menu column -->
-  <div class="col-sm-8">
-    <div class="row">
-
-    @yield('post')
-    @yield('request')
-    @yield('chat')
-    @yield('myaccount')
-    @yield('setting')
+<body {{-- style="background-image: url({{URL::asset('assets/imges/a1.jpg')}});" --}}>
+  <nav class="navbar navbar-light bg-white">
+        <a href="#" class="navbar-brand"><h3>Communito.in</h3></a>
+        <form class="form-inline">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+         <div class="d-flex justify-content-between align-items-center">
+            <button class="btn btn-sm align-middle btn-outline-secondary">
+              <img class="rounded-circle" width="30" src="https://picsum.photos/50/50" alt="">
+                <b style="font-size: 15px">{{Auth::user()->fname }} {{Auth::user()->sname}}</b>
+            </button>
+          </div>
+    </nav>
 
 
+    <div class="container-fluid gedf-wrapper">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="card-body">
+                      <ul class="nav flex-column bg-white mb-0">
+                        <li class="nav-item">
+                          <a href="{!!url('/user/post')!!}" class="nav-link text-dark font-italic bg-light">
+                                    <i class="fa fa-th-large mr-3 text-primary fa-fw"></i>
+                                    Home
+                                </a>
+                        </li>
+                        <li class="nav-item">
+                          <a href="{!!url('user/profile')!!}" class="nav-link text-dark font-italic">
+                                    <i class="fa fa-user mr-3 text-primary fa-fw"></i>
+                                    Profile
+                                </a>
+                        </li>
+                        <li class="nav-item">
+                          <a href="{!!url('user/findfriends')!!}" class="nav-link text-dark font-italic">
+                                    <i class="fa fa-users mr-3 text-primary fa-fw"></i>
+                                    Find Friends
+                                </a>
+                        </li>
+                        <li class="nav-item">
+                          <a href="{!!url('user/chat')!!}" class="nav-link text-dark font-italic">
+                                    <i class="far fa-comments mr-3 text-primary fa-fw"></i>
+                                    Chat
+                                </a>
+                        </li>
+                        <li class="nav-item">
+                          <a href="{!!url('user/setting')!!}" class="nav-link text-dark font-italic">
+                                    <i class="fa fa-gear mr-3 text-primary fa-fw"></i>
+                                    Setting
+                                </a>
+                        </li>
+                        <li class="nav-item">
+                          <form method="post" action="{!!url('/user/logout')!!}" id="logout-form" style="display: none;">
+                            {{csrf_field()}}
+                          </form>
+                          <a href="{!!url('/user/logout')!!}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="nav-link text-dark font-italic">
+                            <i class="fa fa-sign-out mr-3 text-primary fa-fw"></i>
+                            Logout
+                          </a>
+                          
+                        </li>
+                      </ul>
+
+                    </div>
+                   
+                </div>
+            </div>
+
+            <div class="col-md-6 gedf-main">
+              <div id="posts"></div>
+                @yield('post')
+                @yield('request')
+                @yield('chat')
+                @yield('myaccount')
+                @yield('setting')
+            </div>
+            <div class="col-md-3">
+                <div class="card gedf-card">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                            card's content.</p>
+                        <a href="#" class="card-link">Card link</a>
+                        <a href="#" class="card-link">Another link</a>
+                    </div>
+                </div>
+                <div class="card gedf-card">
+                        <div class="card-body">
+                            <h5 class="card-title">Card title</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                                card's content.</p>
+                            <a href="#" class="card-link">Card link</a>
+                            <a href="#" class="card-link">Another link</a>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
-</div> <!-- row -->
-</div><!--  column8 -->
 
-<div class="col-sm-2" >
+
+   
+
+
+
+
+
   @yield('story')
   @yield('optionsetting')
-</div>
 
-</div>
-</div>
 </body>
 </html>

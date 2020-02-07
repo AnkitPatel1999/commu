@@ -5,9 +5,7 @@
 	<div class="col-sm-6">
 		<h1>Requests</h1>
 	</div>
-	<div class="col-sm-6">
-	    <img src="{{URL::asset('assets/imges/logo.png')}}" height="80px" class="img-circle logoimg">
-	</div>
+	
 </div>
 <div class="row" style="padding-top: 15px;">
 	<div class="col-sm-3">

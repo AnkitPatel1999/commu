@@ -32,20 +32,31 @@
 <body background="{{URL::asset('assets/imges/back.jpg')}}" style=" background-repeat: no-repeat;background-size: cover; ">
 <div class="container">
     <div class="row">
+      <div class="col-sm-5 offset-3">
+        @if(session('status'))
+          <div class="alert alert-success"><center>{{session('status')}}</center></div>  
+        @endif
+      </div>
+    </div>
+    <div class="row">
         <div class="col-sm-7">
             
         </div>
         <div class="col-sm-4 top">
-            <form>
+            <form method="POST" action="/user/login" class="form" name="login">
+              {{ csrf_field()}}
                 <center><h1>Login</h1></center>
-                <label class="lbl">Username</label>
-                <input type="text" name="uname" class="form-control">
+                <label class="lbl">Email</label>
+                <input type="email" name="email" value="{{ old('email')}}" class="form-control">
                 <label>Password</label>
-                <input type="text" name="password" class="form-control">
+                <input type="password" name="password" class="form-control">
                 <center><input type="submit" name="login" value="Login" class="form-control btn btn-primary loginbtn" ></center>
 
             </form>
+             <div class="text-center">Dont't have an account? <a href="{{ url('user/signup') }}" >Sign Up</a></div>
+
         </div>
+
     </div>
 </div>
 

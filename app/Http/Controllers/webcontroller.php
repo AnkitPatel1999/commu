@@ -3,8 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
+use App\Post;
+use Session;
+use Storage;
+use Auth;
 
-class webcontroller extends Controller
+class webController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +18,7 @@ class webcontroller extends Controller
      */
     public function index()
     {
-        return view('index');
+        //
     }
 
     /**
@@ -81,39 +86,30 @@ class webcontroller extends Controller
     {
         //
     }
-
-
-
-    public function login()
-    {
-        return view('communito.login');
-    }
-
-    public function signup()
-    {
-        return view('communito.signup');
-    }
-
-    public function post(){
-        return view('communito.layouts.post');  
-    }
-    public function requestFun()
-    {
-        return view('communito.layouts.request');
-    }
-
+   
     public function chat()
     {
         return view('communito.layouts.chat');
     }
-
+    public function request()
+    {
+        return view('communito.layouts.request');
+    }
     public function myaccount()
     {
-        return view('communito.layouts.myaccount');
+        $users = Auth::user();
+       $posts=Post::where('user_id',$users->id)->get(); 
+        
+        return view('communito.layouts.myaccount',compact('users','posts'));
     }
-
     public function setting()
     {
-        return view('communito.layouts.setting');
+        $users = Auth::user();
+
+
+        
+
+        //dd($User);        
+          return view('communito.layouts.setting',compact('users'));
     }
 }

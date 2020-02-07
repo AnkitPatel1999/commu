@@ -6,9 +6,7 @@
 	<div class="col-sm-7">
 		<h1>General Account Settings</h1>
 	</div>
-	<div class="col-sm-5">
-	    <img src="{{URL::asset('assets/imges/logo.png')}}" height="80px" class="img-circle" style="margin-left: 170px; margin-top: 10px">
-	</div>
+	
 </div>
 
 <div class="row" style="margin-top: 20px; font-weight: bold;font-size: 20px;">
@@ -17,17 +15,17 @@
 
 			<tr>
 				<td>Name</td>
-				<td>Ankit</td>
+				<td>{{ $users->fname }} {{ $users->sname }}</td>
 				<td>Edit</td>
 			</tr>
 			<tr>
 				<td>Department</td>
-				<td>Computer</td>
+				<td>{{ $users->dept }}</td>
 				<td>Edit</td>
 			</tr>
 			<tr>
 				<td>Semester</td>
-				<td>5th</td>
+				<td>{{ $users->sem }}</td>
 				<td>Edit</td>
 			</tr>
 			<tr>
@@ -38,12 +36,12 @@
 
 			<tr>
 				<td>Email ID</td>
-				<td>ankitpatelas90@gmail.com</td>
+				<td>{{ $users->email }}</td>
 				<td>Edit</td>
 			</tr>
 			<tr>
 				<td>Password</td>
-				<td>It'sAJ</td>
+				<td>**********</td>
 				<td>Edit</td>
 			</tr>
 
