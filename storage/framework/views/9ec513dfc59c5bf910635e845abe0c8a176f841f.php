@@ -1,5 +1,4 @@
-@extends('communito.layouts.home')
-@section('chat')
+<?php $__env->startSection('chat'); ?>
 
 
 
@@ -174,23 +173,23 @@ img{ max-width:100%;}
             </div>
           </div>
           <div class="inbox_chat">
-            <div class="chat_list ">{{-- active_chat --}}
-              @foreach($friends as $friend)
+            <div class="chat_list ">
+              <?php $__currentLoopData = $friends; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $friend): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
               <div class="chat_people">
                 <div class="chat_img">
-                  @if(0)
-                    <img src="{{asset('storage').'/'.$friend->profile_pic}}" class="rounded-circle">
-                  @else
-                    <img src="{{URL::asset('assets/imges/a1.jpg')}}" width="40px" height="40px" class="rounded-circle">
-                  @endif
+                  <?php if(0): ?>
+                    <img src="<?php echo e(asset('storage').'/'.$friend->profile_pic); ?>" class="rounded-circle">
+                  <?php else: ?>
+                    <img src="<?php echo e(URL::asset('assets/imges/a1.jpg')); ?>" width="40px" height="40px" class="rounded-circle">
+                  <?php endif; ?>
                 </div>
                 <div class="chat_ib">
-                  <h5>{{ $friend->fname}} {{ $friend->sname }} <span class="chat_date">Dec 25</span></h5>
+                  <h5><?php echo e($friend->fname); ?> <?php echo e($friend->sname); ?> <span class="chat_date">Dec 25</span></h5>
                   <p>Test, which is a new approach to have all solutions 
                     astrology under one roof.</p>
                 </div>
               </div>
-              @endforeach
+              <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
             </div>  
          </div>
         </div>
@@ -201,11 +200,11 @@ img{ max-width:100%;}
           <div class="msg_history">
             <div class="incoming_msg">
               <div class="incoming_msg_img"> 
-                @if($profile['profile_pic'])
-                  <img src="{{asset('storage').'/'.$profile['profile_pic']}}" >
-                @else
-                  <img src="{{URL::asset('assets/imges/a1.jpg')}}" width="40px" height="40px" class="rounded-circle">
-                @endif
+                <?php if($profile['profile_pic']): ?>
+                  <img src="<?php echo e(asset('storage').'/'.$profile['profile_pic']); ?>" >
+                <?php else: ?>
+                  <img src="<?php echo e(URL::asset('assets/imges/a1.jpg')); ?>" width="40px" height="40px" class="rounded-circle">
+                <?php endif; ?>
               </div>
               <div class="received_msg">
                 <div class="received_withd_msg">
@@ -260,4 +259,5 @@ img{ max-width:100%;}
     </body>
     </html>
 
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('communito.layouts.home', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH F:\commu\resources\views/communito/layouts/chat.blade.php ENDPATH**/ ?>

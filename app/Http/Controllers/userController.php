@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Profile;
 use Auth;
 use Session;
 
@@ -15,8 +16,8 @@ class userController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        return view('index');
+    {  
+            return view('index');
     }
 
     public function showSignup()
@@ -31,20 +32,6 @@ class userController extends Controller
         User::create($request->all());
 
         return redirect('/user/login')->with('status','you are registered');
-        /*$user = new User([
-
-            'fname'=>$request->post('fname'),
-            'sname'=>$request->post('sname'),
-            'bday'=>$request->post('bday'),
-            'profession'=>$request->post('profession'),
-            'dept'=>$request->post('dept'),
-            'sem'=>$request->post('sem'),
-            'email'=>$request->post('email'),
-            'password'=>$request->post('password')
-
-        ]);
-        $user->save();*/
-
         
     }
     public function validation($request)
@@ -81,7 +68,6 @@ class userController extends Controller
     }
     public function logout()
     {
-        echo "k";
         Session::flush();
         Auth::logout();
         return redirect('/user/login');

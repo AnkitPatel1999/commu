@@ -6,9 +6,11 @@ use Illuminate\Http\Request;
 use App\Post;
 use App\User;
 use App\Like;
+use App\Profile;
 use Session;
 use Auth;
 use Storage;
+use DB;
 
 class postController extends Controller
 {
@@ -16,8 +18,12 @@ class postController extends Controller
     {
         $posts=Post::orderBy('created_at','desc')->get();
         $users=User::all();
+        $user_id=Auth::user()->id;
+        $profile=Profile::where('user_id',$user_id)->first();  
+
+    
        
-        	return view('communito.layouts.post',compact('posts','users'));
+            return view('communito.layouts.post',compact('posts','users','profile'));
     }
 
     public function store(Request $request)
@@ -80,37 +86,20 @@ class postController extends Controller
         return redirect()->route('blogs.index')
                         ->with('success','Blog updated successfully');
     }
-    public function like(Request $request)
-    {
-           $post_id = $request['post_Id'];
-           $islike = $request['isLike'] === 'true';
-           $update = false;
-           $post = Post::find($post_id);
-           if (!$post) {
-               return null;
-           }
-           $user = Auth::user();
-           $like = $user->likes()->where('post_id', $post_id)->first();
-           if ($like) {
-               $already_like = $like->like;
-               $update = true;
-               if ($already_like == $islike) {
-                   $like->delete();
-                   return null;
-               }
-           } else {
-               $like = new Like();
-           }
-           $like->like = $is_like;
-           $like->user_id = $user->id;
-           $like->post_id = $post->id;
-           if ($update) {
-               $like->update();
-           } else {
-               $like->save();
-           }
-           return null;
-       
-       
+    
+
+    public function like($id){
+      $likePost = Like::insert([
+        'post_id' => $id,
+        'like' => 1,
+        'user_id' => Auth::user()->id,
+      ]);
+      // if like successfully then display posts
+      if($likePost){
+        //return post::with('user','likes')->orderBy('created_at','DESC')->get();
+        return view('communito.layouts.post');
+
+      }
     }
+
 }

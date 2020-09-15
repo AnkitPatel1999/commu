@@ -31,35 +31,36 @@
        }
     </style>
 </head>
-<body background="{{URL::asset('assets/imges/back.jpg')}}" style=" background-repeat: no-repeat;background-size: cover; ">
+<body background="<?php echo e(URL::asset('assets/imges/back.jpg')); ?>" style=" background-repeat: no-repeat;background-size: cover; ">
 <div class="container">
     <div class="row">
         <div class="col-sm-6" style="margin-top: 200px;">
-             @if(count($errors)>0)
-            @foreach($errors->all() as $error)
-              <p class="alert alert-danger">{{$error}} </p>
-            @endforeach
-          @endif
+             <?php if(count($errors)>0): ?>
+            <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+              <p class="alert alert-danger"><?php echo e($error); ?> </p>
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+          <?php endif; ?>
         </div>
         <div class="col-sm-6 top">
             <form class="form" action="/user/signup" method="POST" name="signup">
-              {{ csrf_field() }}
+              <?php echo e(csrf_field()); ?>
+
                 <h1><center>Sign up</center></h1>
                   <div class="row row_fname">
                     <div class="col-sm-6">
-                      <input type="text" name="fname" value="{{old('fname')}}" class="form-control{{ ($errors->first('fname') ? " form-error" : "")}}" placeholder="First Name">
+                      <input type="text" name="fname" value="<?php echo e(old('fname')); ?>" class="form-control<?php echo e(($errors->first('fname') ? " form-error" : "")); ?>" placeholder="First Name">
                     </div>
                     <div class="col-sm-6">
-                      <input type="text" name="sname" value="{{old('sname')}}" class="form-control{{ ($errors->first('sname') ? " form-error" : "")}}" placeholder="Surname">
+                      <input type="text" name="sname" value="<?php echo e(old('sname')); ?>" class="form-control<?php echo e(($errors->first('sname') ? " form-error" : "")); ?>" placeholder="Surname">
                     </div>
                   </div>
 
              <div class="form-group">
                 <label style="margin: 8px 0px 0px 0px; padding: 0px;">Birth Day</label>
-                <input type="date" name="bday" value="{{old('bday')}}"class="form-control{{ ($errors->first('bday') ? " form-error" : "")}}">
+                <input type="date" name="bday" value="<?php echo e(old('bday')); ?>"class="form-control<?php echo e(($errors->first('bday') ? " form-error" : "")); ?>">
              </div>
              <div class="form-group">
-                <select name="profession" value="{{old('profession')}}" class="form-control">
+                <select name="profession" value="<?php echo e(old('profession')); ?>" class="form-control">
                   <option>Profession</option>
                   <option>HaCkeR</option>
                   <option>Web Developer</option>
@@ -70,7 +71,7 @@
              <div class="form-group">
                 <div class="row">
                   <div class="col-sm-6">
-                    <select name="dept" value="{{old('dept')}}" class="form-control">
+                    <select name="dept" value="<?php echo e(old('dept')); ?>" class="form-control">
                       <option>Department</option>
                       <option>Computer</option>
                       <option>IT</option>
@@ -82,7 +83,7 @@
                     </select>
                   </div>
                   <div class="col-sm-6">
-                    <select name="sem" value="{{old('sem')}}" class="form-control">
+                    <select name="sem" value="<?php echo e(old('sem')); ?>" class="form-control">
                       <option>Semester</option>
                       <option>1st</option>
                       <option>2ed</option>
@@ -95,14 +96,14 @@
                 </div>
               </div>
               <div class="form-group">
-                <input type="email" name="email" value="{{old('email')}}" placeholder="Email" class="form-control{{ ($errors->first('email') ? " form-error" : "")}}">
+                <input type="email" name="email" value="<?php echo e(old('email')); ?>" placeholder="Email" class="form-control<?php echo e(($errors->first('email') ? " form-error" : "")); ?>">
               </div>
             
               <div class="form-group">              
-                <input type="password" name="password" class="form-control{{ ($errors->first('password') ? " form-error" : "")}}" placeholder="Password">
+                <input type="password" name="password" class="form-control<?php echo e(($errors->first('password') ? " form-error" : "")); ?>" placeholder="Password">
               </div>
 
-              <input type="password" name="password_confirmation" id="inputPassword" class="form-control{{ ($errors->first('password_confirmation') ? " form-error" : "")}}" placeholder="Password Confirmation">
+              <input type="password" name="password_confirmation" id="inputPassword" class="form-control<?php echo e(($errors->first('password_confirmation') ? " form-error" : "")); ?>" placeholder="Password Confirmation">
                 <center><input type="submit"  value="Sign up" class="form-control btn btn-primary loginbtn"></center>
             </form>
         </div>
@@ -110,4 +111,4 @@
 </div>
 
 </body>
-</html>
+</html><?php /**PATH F:\commu\resources\views/communito/signup.blade.php ENDPATH**/ ?>

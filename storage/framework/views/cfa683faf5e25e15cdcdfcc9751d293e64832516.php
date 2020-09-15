@@ -1,5 +1,4 @@
-@extends('communito.layouts.home')
-@section('post')
+<?php $__env->startSection('post'); ?>
 
                 <!--- \\\\\\\Post-->
                 <div class="card gedf-card" style="margin-bottom: 5px;">
@@ -11,8 +10,9 @@
                            
                         </ul>
                     </div>
-                  <form id="post" method="post" action="{{ route('user/post') }}" enctype="multipart/form-data">
-                  {{ csrf_field() }}
+                  <form id="post" method="post" action="<?php echo e(route('user/post')); ?>" enctype="multipart/form-data">
+                  <?php echo e(csrf_field()); ?>
+
                     <div class="card-body">
                         <div class="tab-content" id="myTabContent">
                             <div class="tab-pane fade show active" id="posts" role="tabpanel" aria-labelledby="posts-tab">
@@ -59,25 +59,25 @@
                     </form>
                 </div>
                 <!-- Post /////-->
-            @include('communito.includes.message_block')
+            <?php echo $__env->make('communito.includes.message_block', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
                 <!--- \\\\\\\Post-->
-            @foreach($posts as $post)
+            <?php $__currentLoopData = $posts; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $post): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
             <article class="posts">
                 <div class="card gedf-card">
                     <div class="card-header">
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="mr-2">
-                                    @if(0)
-                                    <img src="{{asset('storage').'/'.$posts->profile_pic}}" width="45" height="45" class="rounded-circle">
-                                    @else
-                                    <img src="{{ URL::asset('assets/imges/a1.jpg')}}" width="45" height="45" class="rounded-circle">
-                                    @endif
+                                    <?php if(0): ?>
+                                    <img src="<?php echo e(asset('storage').'/'.$posts->profile_pic); ?>" width="45" height="45" class="rounded-circle">
+                                    <?php else: ?>
+                                    <img src="<?php echo e(URL::asset('assets/imges/a1.jpg')); ?>" width="45" height="45" class="rounded-circle">
+                                    <?php endif; ?>
                                     
                                 </div>
                                 <div class="ml-2">
                                      
-                                      <div class="h5 m-0">{{$post->user->fname}} {{$post->user->sname}}</div>
+                                      <div class="h5 m-0"><?php echo e($post->user->fname); ?> <?php echo e($post->user->sname); ?></div>
                                   <div class="h7 text-muted">Ahmedabad,India</div>
                                 </div>
                             </div>
@@ -90,10 +90,10 @@
                                         <div class="h6 dropdown-header">Configuration</div>
                                         <a class="dropdown-item" href="#">Save</a>
                                         <a class="dropdown-item" href="#">Hide</a>
-                                    @if(Auth::user())
+                                    <?php if(Auth::user()): ?>
                                         <a class="dropdown-item edit" href="#">Edit</a>
-                                        <a class="dropdown-item" href="{{route('delete',['post_id'=>$post->id])}}">Delete</a>
-                                    @endif
+                                        <a class="dropdown-item" href="<?php echo e(route('delete',['post_id'=>$post->id])); ?>">Delete</a>
+                                    <?php endif; ?>
                                     </div>
                                 </div>
                             </div>
@@ -101,19 +101,20 @@
 
                     </div>
                     <div class="card-body">
-                        <div class="text-muted h7 mb-2"> <i class="fa fa-clock-o"> </i> {{$post->created_at}}</div>
+                        <div class="text-muted h7 mb-2"> <i class="fa fa-clock-o"> </i> <?php echo e($post->created_at); ?></div>
                         <div class="pic">
                             <center>
-                            <img src="{{ asset('storage').'/'.$post->postpic}}" style="width: 400px" height="400px"">
+                            <img src="<?php echo e(asset('storage').'/'.$post->postpic); ?>" style="width: 400px" height="400px"">
                             </center>
                         </div>
 
                         <p class="card-text">
-                           {{$post->postdes}}
+                           <?php echo e($post->postdes); ?>
+
                         </p>
                     </div>
                     <div class="card-footer">
-                        <a href="{{url('/like')}}/{{$post->id}}" class="card-link"><i class="fa fa-gittip"></i> Like</a>
+                        <a href="<?php echo e(url('/like')); ?>/<?php echo e($post->id); ?>" class="card-link"><i class="fa fa-gittip"></i> Like</a>
                        
                         <a href="#" class="card-link"><i class="fa fa-comment"></i> Comment</a>
                         <a href="#" class="card-link"><i class="fa fa-mail-forward"></i> Share</a>
@@ -143,12 +144,12 @@
                           </div><!-- /.modal-dialog -->
                         </div><!-- /.modal -->
                         <script type="text/javascript">
-                            var token = '{{Session::token()}}';
-                            var urlEdit = '{{ route('user/edit') }}';
-                            var urlLike = '{{ route('user/like') }}';
+                            var token = '<?php echo e(Session::token()); ?>';
+                            var urlEdit = '<?php echo e(route('user/edit')); ?>';
+                            var urlLike = '<?php echo e(route('user/like')); ?>';
                         </script>
                           
-            @endforeach
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 <!-- Post /////-->
 
                 <!--- \\\\\\\Post-->
@@ -259,6 +260,8 @@
 
 
 
-@endsection
+<?php $__env->stopSection(); ?>
 
 
+
+<?php echo $__env->make('communito.layouts.home', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH F:\commu\resources\views/communito/layouts/post.blade.php ENDPATH**/ ?>

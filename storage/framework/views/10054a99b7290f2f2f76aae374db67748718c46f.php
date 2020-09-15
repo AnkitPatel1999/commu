@@ -68,7 +68,7 @@
        <div class="container main">
         <div class="row row_logo">
             <div class="col-sm-2 col_img">
-                <img src="{{URL::asset('assets/imges/logo1.png')}}" height="120px" alt="imageLogo">
+                <img src="<?php echo e(URL::asset('assets/imges/logo1.png')); ?>" height="120px" alt="imageLogo">
             </div>
             <div class="col-sm-6 col_commu">
                 <h1><b>Communito</b></h1>
@@ -77,13 +77,13 @@
             <div class="col-sm-4">
                 <div class="row row_btn">
                     <div class="col-sm-6 btnlogin">
-                        <form class="form" action="{{ url('user/login') }}">
+                        <form class="form" action="<?php echo e(url('user/login')); ?>">
                             <input type="submit" name="login" value="Login" class="form-control btn btn-primary">                  
                         </form>                       
                     </div>
 
                     <div class="col-sm-6 btnsignup">
-                        <form class="form" action="{{ url('user/signup') }}"">
+                        <form class="form" action="<?php echo e(url('user/signup')); ?>"">
                             <input type="submit" name="signup" value="Signup" class="form-control btn btn-primary">
                         </form>
                     </div>
@@ -94,4 +94,4 @@
 
 </div>
 </body>
-</html>
+</html><?php /**PATH F:\commu\resources\views/index.blade.php ENDPATH**/ ?>

@@ -1,37 +1,31 @@
-@extends('communito.layouts.home')
+<?php $__env->startSection('myaccount'); ?>
 
-@section('myaccount')
 
-{{-- <div class="row">
-	<div class="col-sm-6">
-		<h1>My Account</h1>
-	</div>
-	
-</div> --}}
 
 <div class="row">
 	<div class="col-sm-6">
 		<div class="row">
 			<div class="col-sm-6">
-				@if($profile['profile_pic'])
-		   		<img src="{{asset('storage').'/'.$profile['profile_pic']}}" width="120px" height="120px" class="rounded-circle">
-		   		@else
-		   		<img src="{{ URL::asset('assets/imges/a1.jpg')}}" width="120px" height="120px" class="rounded-circle">
-		   		@endif
+				<?php if($profile['profile_pic']): ?>
+		   		<img src="<?php echo e(asset('storage').'/'.$profile['profile_pic']); ?>" width="120px" height="120px" class="rounded-circle">
+		   		<?php else: ?>
+		   		<img src="<?php echo e(URL::asset('assets/imges/a1.jpg')); ?>" width="120px" height="120px" class="rounded-circle">
+		   		<?php endif; ?>
 
 
 			</div>
 			<div class="col-sm-6" style="margin-top: 20px; margin-left: 0px; padding-left: 0px">
-				<b>{{$users->fname }} {{ $users->sname}}</b>
-				<p style="margin: 0px">Dept : <b>{{$users->dept}}</b></p>
-				<p>Semester : <b>{{$users->sem}}</b></p>
+				<b><?php echo e($users->fname); ?> <?php echo e($users->sname); ?></b>
+				<p style="margin: 0px">Dept : <b><?php echo e($users->dept); ?></b></p>
+				<p>Semester : <b><?php echo e($users->sem); ?></b></p>
 			</div>
 		</div>
 		<div class="row" style="margin-top: 20px;margin-bottom: 20px;">
 			<div class="col-sm-6" >
 				<center>
 					<b>
-						{{ $postsCount }}
+						<?php echo e($postsCount); ?>
+
 					</b>
 					<p><a href="#">Posts</a></p>
 				</center>
@@ -39,8 +33,8 @@
 
 			<div class="col-sm-6" >
 				<center>
-					<b>{{ $friends}}</b>
-					<p><a href="{!!url('friends')!!}"> Friends </a></p>
+					<b><?php echo e($friends); ?></b>
+					<p><a href="<?php echo url('friends'); ?>"> Friends </a></p>
 				</center>
 			</div>
 		</div>
@@ -72,19 +66,19 @@
 </div>
 
 <div class="row" >
-@if($posts->count())
-@foreach($posts as $post)
+<?php if($posts->count()): ?>
+<?php $__currentLoopData = $posts; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $post): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 	<div class="col-sm-4" style="padding: 10px;">
 		<div class="panel">
 			<div class="panel-body posts">
 				<center>
-	  				<img src="{{asset('storage').'/'.$post->postpic}}" class="img-thumbnail">
+	  				<img src="<?php echo e(asset('storage').'/'.$post->postpic); ?>" class="img-thumbnail">
 				</center>
 			</div>
 		</div>
 	</div>
-@endforeach
-@endif
+<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+<?php endif; ?>
     
 </div>
 
@@ -96,30 +90,31 @@
                                 <h4 class="modal-title">Edit Profile</h4>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                              </div>
-                          	<form method="post" action="/user/profileUpdate/{{ $users->id }}" enctype="multipart/form-data">
+                          	<form method="post" action="/user/profileUpdate/<?php echo e($users->id); ?>" enctype="multipart/form-data">
                               <div class="modal-body">
-                              		{{ csrf_field() }}
+                              		<?php echo e(csrf_field()); ?>
+
                               		
                                     <div class="form-group">
                                         <label >Change profile pic</label>
-                                       	<input type="file" name="profile_pic" value="{{ $profile['profile_pic']}}" class="form-control profile" >
+                                       	<input type="file" name="profile_pic" value="<?php echo e($profile['profile_pic']); ?>" class="form-control profile" >
                                     </div>
                                     
                                      <div class="form-group">
                                         <label >Bio</label>
-                                       	<input type="text" name="bio" value="{{ $profile['bio']}}"class="form-control">
+                                       	<input type="text" name="bio" value="<?php echo e($profile['bio']); ?>"class="form-control">
                                     </div>
                                     <div class="form-group">
                                         <label >Name</label>
-                                       	<input type="text" name="fname" value="{{ $users->fname }}" class="form-control">
+                                       	<input type="text" name="fname" value="<?php echo e($users->fname); ?>" class="form-control">
                                     </div>
                                     <div class="form-group">
                                         <label >Department</label>
-                                       	<input type="text" name="dept"value="{{ $users->dept }}" class="form-control">
+                                       	<input type="text" name="dept"value="<?php echo e($users->dept); ?>" class="form-control">
                                     </div>
                                     <div class="form-group">
                                         <label >Semester</label>
-                                       	<input type="text" name="sem" value="{{ $users->sem }}" class="form-control">
+                                       	<input type="text" name="sem" value="<?php echo e($users->sem); ?>" class="form-control">
                                     </div>
                                
                               </div>
@@ -141,4 +136,6 @@
       var fileName = $(this).val().split("\\").pop();
     });
 </script>
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('communito.layouts.home', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH F:\commu\resources\views/communito/layouts/myaccount.blade.php ENDPATH**/ ?>

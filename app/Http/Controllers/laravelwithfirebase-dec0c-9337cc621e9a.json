@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "laravelwithfirebase-dec0c",
+  "private_key_id": "9337cc621e9a69b6c06331f9959dfc2aa48b710d",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDA23lt/+Kt7fcr\ngIIYqle7bKsrlcSX1hP/FxSKNFKt/Isgab12PpaXRoHTEBH8aXI1O4bOLBGWoG9X\nruOSFP0bc+lvytlovh36OX91a7scbv6n3Pc8Z0XHZ1+Lz65E1EZLABYXnFWvHt3R\n5SP/z9P4hgWXX0uBSWX4j/d7Bj/Svlebtb3mWsA80pdsFrRdieEizQwenq70sY2m\nr7OqgSy0d90s01E7N61AYVb72M6WatPVLveFNFVEiBlcE2sWDM3Ax64gaqL3Z6NX\nq0OccghzhK5Qqhz73+tuUZwr9ORTvW2RHySb2dNbTvgqfkoVX+94PDb1gpu1mwjd\nZBHiNgWtAgMBAAECggEAL5w+/wPjvxJ3KXshItuyqudp3mmrzdwgtaHKBVBjdOZa\nplbUWgObg575X9SgzBJwCmo2nmFMukXDFv9q2N5rmcJkx59pSq1ckzBsod1FpQBV\nx7UKKBRKqq5/bPGJUR6id9N+oLeMg534HuAVogp5hun3KWZyKmmnTdSkwO9LBEhg\n8JgLiP11NxCIKz6sMEYTF6urUQabwCJo0kRQMRZtA6ScGCT2ED+dmKA8X9Dkegau\n+A5VJp7CqZsy4PeQcfEeFNd5z3q6Y35o++2CYRBZhzkonPf8bhS7cfZ1p520gtOq\nAn/Qe84HzEsEajUDlTkELmRFUXy4E/pC9N+XPCjRgQKBgQD1jtCq7VdkMdzexr8v\nMjypR6c8y30oLjeewzJC3ttlYnZVxOXz1pTcBuGqi7q5bsHwYYKtIF7v6o+uoywD\nEShr/lgYrYemktH3AluQd2TJwW1mna9xdMbKv8Zv1MRORVt6YGFuTiNkfQwGvVDv\nn1q7HbOBi2ndbDPRr5zM323FYQKBgQDJDvO5YeddjbWKIT0ChQeTUSCq57GxdDXI\nxrSz+TlLbOEcnt0cf++LnZDfh5AdPeNzDK0sZO4POJ4jnHaI0/VkJkEV5oMyF7Q4\nRC7cu/nB6BV6lXW4EwSpBHbEgk09VAxlzzoQsMGgT1XfOfuoHdBFLs7XN1YAPeDx\nWZFX2BtXzQKBgDUkRiZnnN0TKXCQ5HkrTxN3bUrr4tcaQXE7Xxo3rpVfXKqtJPLD\nQo3nc1j8SlmtDY2fHK+o7MLRKW0q5PB4+x17+sbEbzHuXkAto3E9VXOQR8PIZlqQ\nYiEopaI4Eo+51NVEHHHJuUEbCso+mFBzVShfgiSL7ko8C27aqX1w8QmhAoGBALG4\nn8N8QRE3FANXQiCaCoozqhan2zAqsugYjN6RLA353jp4SqbIh6v3yXls0PyoGgc2\na1TUmoGl4FNGGJj2EvFFxz5elhWPUmRyEKJZHnpCdcn3lyjw1qu4IGuvaisNwi+0\nL3VVaLIVrqg1DrgaMmEU8QzYAxMPn2h3bbwicHj5AoGBAPMRvBuzjEEhMwd+9aVn\n+bjwf8WDCCsW8KwMrjWsK/fvfO0yFp90sMr6xK02wjA9WbwXAjLyo+qKKbV3QSUO\n+/Loe0lD54QVj40WP3jPtOrSW+DepY9zhVR9E09irOtDsWkhSwJF1RzmjZ5j1I8y\n+wvo/HxKgW2J/tKARv/UQgMa\n-----END PRIVATE KEY-----\n",
+  "client_email": "laravelwithfirebase-dec0c@appspot.gserviceaccount.com",
+  "client_id": "105077672602479599983",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/laravelwithfirebase-dec0c%40appspot.gserviceaccount.com"
+}

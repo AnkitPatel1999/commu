@@ -18,6 +18,7 @@ Route::get('/communito/login','userController@login');
 
 Route::get('communito','userController@index');
 
+Route::get('firebase','FirebaseController@index');
 
 
 
@@ -34,21 +35,40 @@ Route::post('/user/logout','userController@logout');
 });*/
 
 Route::group(['middleware'=>['auth']],function(){
-	Route::get('/user/findfriends','webController@request');
+	Route::get('/user/findfriends','webController@findfriends');
+	route::get('/addFriend/{id}','webController@sendRequest');
+
+	route::get('/request','webController@request');
+	route::get('/accept/{name}/{id}','webController@accept');
+	route::get('/requestRemove/{id}','webController@requestRemove');
+	route::get('/friends','webController@friends');
+	route::get('/friendprofile/{id}','webController@friendprofile');
+	//route::get('/friendprofile',['as'=>'/friendprofile/{id}','uses'=>'webController@friendprofile']);
+	route::get('/unfriend/{id}','webController@unFriend');
+
+
+
+
 	Route::get('/user/chat','webController@chat');
 	Route::get('/user/profile','webController@myaccount');
 	Route::get('/user/setting','webController@setting');
 	Route::get('/user/post','postController@post');
 	route::post('/user/post',['as'=>'user/post','uses'=>'postController@store']);
 	route::get('delete/{post_id}',['as'=>'delete','uses'=>'postController@deletePost']);
+	route::get('like/{id}',['as'=>'like','uses'=>'postController@like']);
+
+    //Route::get('/like/{id}','postController@like');
+
 /*	Route::post('user/edit',function(\Illuminate\Http\Request $request){
 		return response()->json( ['message'=> $request['post_id']] );
 	})->name('user/edit');*/
 	route::post('user/edit',['as' => 'user/edit' , 'uses' => 'postController@editPost']);
 	route::post('user/like',['as' => 'user/like' , 'uses' => 'postController@like']);
 
-	route::post('/user/profileUpdate',['as' => 'user/profileUpdate' , 'uses' => 'profileController@update']);
+	
+	route::post('/user/profileUpdate/{id}',['as' => 'user/profileUpdate' , 'uses' => 'profileController@update']);
 
+	route::get('/user/home','userController@index');
 });
 
 
@@ -56,7 +76,13 @@ Route::group(['middleware'=>['auth']],function(){
 
 Route::get('/ok','userController@show');
 
-Route::get('/home',function(){
-	return view('/communito/home');
+
+
+Route::get('/test',function(){
+	return Auth::user()->test();
 });
 
+Route::get('/', function () {
+	return view('welcome');
+	});
+	Route::get('/phpfirebase_sdk','FirebaseController@index');
